@@ -1,6 +1,6 @@
 package com.bignerdranch.android.locatr.repository;
 
-import com.bignerdranch.android.locatr.GalleryItemEntity;
+import com.bignerdranch.android.locatr.model.GalleryItemEntity;
 
 import java.util.List;
 
