@@ -1,6 +1,6 @@
 package com.bignerdranch.android.locatr.webservice;
 
-import com.bignerdranch.android.locatr.GalleryItemWrapper;
+import com.bignerdranch.android.locatr.model.GalleryItemWrapper;
 
 import io.reactivex.Single;
 import retrofit2.http.GET;
