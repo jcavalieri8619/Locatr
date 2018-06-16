@@ -11,7 +11,7 @@ import io.reactivex.Single;
 public class PhotoRepositoryImpl implements PhotoRepository {
 
 
-    FlickrAPI mWebService;
+    private FlickrAPI mWebService;
 
 
     public PhotoRepositoryImpl(final FlickrAPI webService) {
