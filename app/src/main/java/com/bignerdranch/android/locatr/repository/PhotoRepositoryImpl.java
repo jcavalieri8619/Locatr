@@ -1,7 +1,7 @@
 package com.bignerdranch.android.locatr.repository;
 
-import com.bignerdranch.android.locatr.GalleryItemEntity;
-import com.bignerdranch.android.locatr.GalleryItemWrapper;
+import com.bignerdranch.android.locatr.model.GalleryItemEntity;
+import com.bignerdranch.android.locatr.model.GalleryItemWrapper;
 import com.bignerdranch.android.locatr.webservice.FlickrAPI;
 
 import java.util.List;
