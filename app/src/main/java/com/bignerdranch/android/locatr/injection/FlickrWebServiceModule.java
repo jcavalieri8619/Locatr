@@ -14,6 +14,7 @@ import okhttp3.HttpUrl;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -22,7 +23,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class FlickrWebServiceModule {
 
 
-    @Singleton
     @Provides
     public FlickrAPI flickerAPI(Retrofit retrofit) {
         return retrofit.create(FlickrAPI.class);
@@ -56,6 +56,9 @@ public class FlickrWebServiceModule {
     @Provides
     public OkHttpClient okHttpClient() {
 
+        HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
+        httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+
         OkHttpClient okHttpClient = new OkHttpClient.Builder()
                 .addInterceptor(new Interceptor() {
                     @Override
@@ -69,7 +72,8 @@ public class FlickrWebServiceModule {
                                 .addQueryParameter("api_key", FlickrAPI.API_KEY)
                                 .addQueryParameter("format", "json")
                                 .addQueryParameter("nojsoncallback", "1")
-                                .addQueryParameter("extras", "url_s")
+                                .addQueryParameter("extras", "url_s,geo")
+                                .addQueryParameter("sort","interestingness-desc")
                                 .build();
 
 
@@ -80,7 +84,10 @@ public class FlickrWebServiceModule {
 
                         return chain.proceed(newRequest);
                     }
-                }).build();
+                }).addInterceptor(httpLoggingInterceptor)
+                .build();
+
+
 
         return okHttpClient;
     }
