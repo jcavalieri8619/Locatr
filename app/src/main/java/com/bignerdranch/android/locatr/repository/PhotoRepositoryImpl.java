@@ -19,13 +19,19 @@ public class PhotoRepositoryImpl implements PhotoRepository {
     }
 
     @Override
-    public Single<List<GalleryItemEntity>> searchPhotos(final String text) {
-        return mWebService.loadSearchResults(text).map(this::extractFromWrapper);
+    public Single<List<GalleryItemEntity>> searchPhotosByText(final String text) {
+        return mWebService.loadSearchByTextResults(text).map(this::extractFromWrapper);
     }
 
     @Override
     public Single<List<GalleryItemEntity>> getRecentPhotos() {
         return mWebService.loadRecents().map(this::extractFromWrapper);
+    }
+
+    @Override
+    public Single<List<GalleryItemEntity>> searchPhotosByLocation(final String latitute, final String longitute) {
+        return mWebService.loadSearchByLocationResults(latitute, longitute)
+                .map(this::extractFromWrapper);
     }
 
 
