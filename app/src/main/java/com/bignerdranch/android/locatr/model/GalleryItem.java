@@ -22,6 +22,14 @@ public interface GalleryItem {
 
     void setCaption(String caption);
 
+    double getLatitude();
+
+    void setLatitude(double latitude);
+
+    double getLongitude();
+
+    void setLongitude(double longitude);
+
 
     String getUrl();
 
