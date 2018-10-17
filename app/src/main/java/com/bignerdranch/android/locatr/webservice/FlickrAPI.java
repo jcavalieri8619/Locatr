@@ -18,7 +18,11 @@ public interface FlickrAPI {
 
 
     @GET("services/rest/?method=flickr.photos.search")
-    Single<GalleryItemWrapper> loadSearchResults(@Query("text") String text);
+    Single<GalleryItemWrapper> loadSearchByTextResults(@Query("text") String text);
+
+    @GET("services/rest/?method=flickr.photos.search")
+    Single<GalleryItemWrapper> loadSearchByLocationResults(@Query("lat") String latitute,
+                                                           @Query("lon") String longitute);
 
 
 }
