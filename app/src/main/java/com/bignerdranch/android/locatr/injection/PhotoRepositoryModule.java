@@ -12,7 +12,6 @@ import dagger.Provides;
 @Module(includes = FlickrWebServiceModule.class)
 public class PhotoRepositoryModule {
 
-    @Singleton
     @Provides
     public PhotoRepository photoRepository(FlickrAPI webService) {
         return new PhotoRepositoryImpl(webService);
