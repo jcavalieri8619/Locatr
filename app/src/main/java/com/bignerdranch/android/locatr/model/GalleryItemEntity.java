@@ -33,6 +33,15 @@ public class GalleryItemEntity implements GalleryItem {
     private String mOwner;
 
 
+    @Expose
+    @SerializedName("latitude")
+    private double mLatitude;
+
+    @Expose
+    @SerializedName("longitude")
+    private double mLongitude;
+
+
     public Uri constructPhotoPageUri() {
         final String FLICKR_URI = "https://www.flickr.com/photos/";
 
@@ -95,6 +104,27 @@ public class GalleryItemEntity implements GalleryItem {
     @Override
     public void setCaption(final String caption) {
         mCaption = caption;
+    }
+
+    @Override
+    public double getLatitude() {
+        return mLatitude;
+    }
+
+    @Override
+    public void setLatitude(final double latitude) {
+
+        mLatitude = latitude;
+    }
+
+    @Override
+    public double getLongitude() {
+        return mLongitude;
+    }
+
+    @Override
+    public void setLongitude(final double longitude) {
+        mLongitude = longitude;
     }
 
     @Override
